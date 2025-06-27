@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Emacs
+Comment=Easily access Emacs' projects
+X-KDE-ServiceTypes=Plasma/Runner
+Type=Service
+Icon=emacs
+X-KDE-PluginInfo-Author=Aleksei Gusev
+X-KDE-PluginInfo-Email=aleksei.guusev@gmail.com
+X-KDE-PluginInfo-Name=krunner_emacs
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-License=LGPL
+X-KDE-PluginInfo-EnabledByDefault=true
+X-Plasma-API=DBus
+X-Plasma-DBusRunner-Service=org.kde.krunner_emacs
