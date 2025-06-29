@@ -31,7 +31,8 @@
   "Run Emacs for PROJECT-ROOT, handles `org.kde.krunner1.Run'."
   (let ((project-root (expand-file-name project-root)))
     (message (concat "emacs --chdir " project-root))
-    (call-process "emacs" nil nil nil "--chdir" (expand-file-name project-root))))
+    (start-process "emacs" nil "emacs" "--chdir" (expand-file-name project-root)))
+  '())
 
 (defun krunner_emacs-project-to-match (project-root)
   "Convert PROJECT-ROOT to D-Bus match response for krunner."
