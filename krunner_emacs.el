@@ -6,7 +6,7 @@
 ;; Maintainer: Aleksei Gusev <aleksei.gusev@gmail.com>
 ;; Created: June 26, 2025
 ;; Modified: June 28, 2025
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Homepage: https://github.com/hron/krunner_emacs
 ;; Package-Requires: ((emacs "30.1"))
 ;;
