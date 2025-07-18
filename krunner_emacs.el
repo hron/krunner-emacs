@@ -1,12 +1,12 @@
-;;; krunner_emacs.el --- KRunner D-Bus runner for Emacs -*- lexical-binding: t; -*-
+;;; krunner_emacs.el --- KRunner integration -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2025 Aleksei Gusev
 ;;
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
 ;; Maintainer: Aleksei Gusev <aleksei.gusev@gmail.com>
 ;; Created: June 26, 2025
-;; Modified: June 28, 2025
-;; Version: 0.0.2
+;; Modified: July 18, 2025
+;; Version: 0.0.3
 ;; Homepage: https://github.com/hron/krunner_emacs
 ;; Package-Requires: ((emacs "30.1"))
 ;;
@@ -19,6 +19,7 @@
 ;;; Code:
 
 (require 'dbus)
+(require 'project)
 
 (setq dbus-debug nil
       debug-on-error t)
@@ -49,10 +50,13 @@
 (defun krunner_emacs-match (query)
   "Return projects that match QUERY, handles `org.kde.krunner1.Match'."
   (let* ((query-tokens (string-split query " "))
+         (all-projects (progn
+                         (project--read-project-list)
+                         (project-known-project-roots)))
          (matched-projects (seq-filter
                             (lambda (p)
                               (seq-every-p (lambda (t) (string-match-p t p)) query-tokens))
-                            (project-known-project-roots))))
+                            all-projects)))
     (list (seq-map #'krunner_emacs-project-to-match matched-projects))))
 
 (dbus-register-method :session
